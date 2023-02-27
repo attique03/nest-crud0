@@ -15,7 +15,7 @@ import config from './config/keys';
   providers: [AppService],
 })
 export class AppModule {
-  // configure(consumer: MiddlewareConsumer) {
-  //   consumer.apply(authMiddleware).forRoutes('items');
-  // }
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(authMiddleware).forRoutes('items');
+  }
 }
