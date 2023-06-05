@@ -9,14 +9,17 @@ import {
 } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
 import { ItemsService } from './items.service';
-import { Item } from './interfaces/item.interface';
+// import { Item } from './interfaces/item.interface';
+import { Item } from './entities/item.entity';
+import { Users } from 'src/users/users.decorator';
 
 @Controller('items')
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Get()
-  findAll(): Promise<Item[]> {
+  findAll(@Users() user): Promise<Item[]> {
+    console.log('User ', user);
     return this.itemsService.findAll();
   }
 
